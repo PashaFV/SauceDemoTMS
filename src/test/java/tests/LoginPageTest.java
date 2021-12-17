@@ -1,39 +1,31 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import tests.base.BaseTest;
 
 public class LoginPageTest extends BaseTest {
 
 
-    @Test
-    public void loginWithoutUsername() {
+    @Test (dataProvider = "loginData")
+    public void negativeLoginTest(String userName, String password, String errorMessage) {
         loginPage.openPage();
-        loginPage.login("", "secret_sauce");
-        Assert.assertEquals(loginPage.getErrorMessage(), "Epic sadface: Username is required", "Сообщение об ошибке не появилось");
+        loginPage.login(userName, password);
+        Assert.assertEquals(loginPage.getErrorMessage(), errorMessage, "Сообщение об ошибке не появилось");
 
     }
 
-    @Test
-    public void loginWithoutPassword() {
-        loginPage.openPage();
-        loginPage.login("standard_user", "");
 
+    @DataProvider(name = "loginData")
+    public Object[][] loginData() {
+        return new Object[][]{
+                {"","secret_sauce","Epic sadface: Username is required"},
+                {"standard_user","","Epic sadface: Password is required"},
+                {"usertest","12345","Epic sadface: Username and password do not match any user in this service"},
+                {"locked_out_user","secret_sauce","Epic sadface: Sorry, this user has been locked out."},
 
+        };
     }
 
-    @Test
-    public void loginWithInvalidData() {
-        loginPage.openPage();
-        loginPage.login("usertest", "12345");
-        loginPage.getErrorMessage();
-
-    }
-
-    @Test
-    public void loginWithoutAnyData() {
-        loginPage.openPage();
-        loginPage.login("", "");
-
-    }
 }

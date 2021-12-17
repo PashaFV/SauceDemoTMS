@@ -1,4 +1,4 @@
-package tests;
+package tests.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -6,21 +6,26 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
 import pages.CartPage;
 import pages.InventoryPage;
 import pages.LoginPage;
 
 import java.util.concurrent.TimeUnit;
 
+@Listeners(TestListener.class)
 public class BaseTest {
 
-    WebDriver driver;
-    LoginPage loginPage;
-    InventoryPage inventoryPage;
-    CartPage cartPage;
+    public WebDriver driver;
+    public LoginPage loginPage;
+    public InventoryPage inventoryPage;
+    public CartPage cartPage;
 
+    @Parameters({"browser"})
     @BeforeMethod
     public void setUp() {
+
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
