@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
+import tests.base.Retry;
 
 public class LoginPageTest extends BaseTest {
 
