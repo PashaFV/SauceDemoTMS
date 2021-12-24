@@ -31,3 +31,23 @@
 3.5 Проверка соответствия стоимости товара в корзине
 3.6 Изменение кол-ва товара в корзине
 3.7 Кнопка меню на странице корзины
+
+-------------------------------------------------------------
+
+1 Запуск тестов используя mvn clean test команду и ее вывод:
+mvn versions:use-latest-versions
+
+[INFO] Updated org.testng:testng:jar:7.1.0 to version 7.4.0
+[INFO] Updated org.seleniumhq.selenium:selenium-java:jar:3.141.59 to version 4.1.1
+[INFO] Updated io.github.bonigarcia:webdrivermanager:jar:5.0.0 to version 5.0.3
+
+2 Запуск тестов используя mvn clean test команду и ее вывод:
+mvn clean test
+
+[ERROR] Tests run: 10, Failures: 1, Errors: 0, Skipped: 0
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  58.834 s
+[INFO] Finished at: 2021-12-24T00:11:37+03:00
+
+3 Использовать параметры для запуска конкретных тестов и методов //TODO
