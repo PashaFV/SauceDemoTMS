@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -13,18 +14,26 @@ public class InventoryPage extends BasePage {
         super(driver);
     }
 
+    @Step("Open inventory page")
     public void open() {
         driver.get("https://www.saucedemo.com/cart.html");
     }
 
+    @Step("Click add to cart button")
     public void addToCart(String nameProduct) {
         driver.findElement(By.xpath(String.format(ADD_PRODUCT_BUTTON, nameProduct))).click();
 
     }
 
+    @Step("Get inventory title")
     public String getInventoryTitle() {
         return driver.findElement(INVENTORY_TITLE).getText();
 
+    }
+
+    @Step("Get inventory title")
+    public boolean inventoryTitleDisplayed() {
+        return driver.findElement(INVENTORY_TITLE).isDisplayed();
     }
 
 }

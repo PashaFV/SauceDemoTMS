@@ -34,7 +34,6 @@ public class ItemInformationTest extends BaseTest {
 //        WebElement logoutButtonInMenuByCss = driver.findElement(By.cssSelector("a[id ^= 'logo']"));
 //        WebElement logoHeaderByCss = driver.findElement(By.cssSelector("div[class $= 'ogo']"));
 //        WebElement imgBackpackByCss = driver.findElement(By.cssSelector("img[alt *= 'kpa']"))
-// test
 
 
     @Test

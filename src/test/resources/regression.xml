@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="4" name="Test suite" parallel="tests">
+<suite thread-count="3" name="Test suite" parallel="tests">
 
     <test name="test 1">
         <classes>
@@ -11,7 +11,6 @@
 
     <test name="test 2">
         <classes>
-            <class name="tests.ProductsCriticalPathTest"/>
             <class name="tests.CartPageTest"/>
         </classes>
     </test> <!-- Test -->

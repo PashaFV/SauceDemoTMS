@@ -5,17 +5,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
 import tests.base.Retry;
+import utils.AllureUtils;
 
 public class LoginPageTest extends BaseTest {
-
-
-    @Test (dataProvider = "loginData")
-    public void negativeLoginTest(String userName, String password, String errorMessage) {
-        loginPage.openPage();
-        loginPage.login(userName, password);
-        Assert.assertEquals(loginPage.getErrorMessage(), errorMessage, "Сообщение об ошибке не появилось");
-
-    }
 
 
     @DataProvider(name = "loginData")
@@ -27,6 +19,22 @@ public class LoginPageTest extends BaseTest {
                 {"locked_out_user","secret_sauce","Epic sadface: Sorry, this user has been locked out."},
 
         };
+    }
+
+    @Test (dataProvider = "loginData",description = "Negative login users")
+    public void negativeLoginTest(String userName, String password, String errorMessage) {
+        loginPage.openPage();
+        loginPage.login(userName, password);
+        Assert.assertEquals(loginPage.getErrorMessage(), errorMessage, "Сообщение об ошибке не появилось");
+        AllureUtils.takeScreenshot(driver);
+    }
+
+    @Test(description = "Login as standard users")
+    public void positiveLogin() {
+        loginPage.openPage();
+        loginPage.login("standard_user", "secret_sauce");
+        Assert.assertTrue(inventoryPage.inventoryTitleDisplayed(),"Переход в каталог не осуществлён");
+        AllureUtils.takeScreenshot(driver);
     }
 
 }
