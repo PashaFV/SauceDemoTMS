@@ -21,7 +21,7 @@ public class LoginPageTest extends BaseTest {
         };
     }
 
-    @Test (dataProvider = "loginData",description = "Negative login users")
+    @Test (dataProvider = "loginData",description = "Login with invalid users data")
     public void negativeLoginTest(String userName, String password, String errorMessage) {
         loginPage.openPage();
         loginPage.login(userName, password);
@@ -29,7 +29,7 @@ public class LoginPageTest extends BaseTest {
         AllureUtils.takeScreenshot(driver);
     }
 
-    @Test(description = "Login as standard users")
+    @Test(description = "Login as standard valid user")
     public void positiveLogin() {
         loginPage.openPage();
         loginPage.login("standard_user", "secret_sauce");
