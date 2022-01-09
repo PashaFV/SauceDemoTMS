@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class InventoryPage extends BasePage {
 
     public static final String ADD_PRODUCT_BUTTON = "//div[div[div[a[div[@class=\"inventory_item_name\"][text()=\"%s\"]]]]]//button";
-    public static final By INVENTORY_TITLE = By.xpath("//button[@id='continue-shopping']");
+    public static final By INVENTORY_TITLE = By.xpath("//span[@class='title']");
 
     public InventoryPage(WebDriver driver) {
         super(driver);
@@ -25,13 +25,7 @@ public class InventoryPage extends BasePage {
 
     }
 
-    @Step("Get inventory title")
-    public String getInventoryTitle() {
-        return driver.findElement(INVENTORY_TITLE).getText();
-
-    }
-
-    @Step("Get inventory title")
+    @Step("Inventory page title is displayed")
     public boolean inventoryTitleDisplayed() {
         return driver.findElement(INVENTORY_TITLE).isDisplayed();
     }

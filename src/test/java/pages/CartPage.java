@@ -53,7 +53,7 @@ public class CartPage extends BasePage {
 
     }
 
-    @Step("Remove item from cart")
+    @Step("Checking that the item has been removed")
     public boolean removedCartItemLine() {
         return driver.findElement(REMOVED_CART_ITEM_LINE).isEnabled();
     }

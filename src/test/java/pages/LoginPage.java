@@ -4,8 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage extends BasePage{
-
+public class LoginPage extends BasePage {
 
 
     public static final By USERNAME_INPUT = By.cssSelector("[placeholder='Username']");
@@ -13,25 +12,25 @@ public class LoginPage extends BasePage{
     public static final By LOGIN_BUTTON = By.id("login-button");
     public static final By ERROR_MESSAGE = By.cssSelector(".error-message-container");
 
-    public LoginPage(WebDriver driver){
-       super(driver);
+    public LoginPage(WebDriver driver) {
+        super(driver);
     }
 
-    @Step("Open the site")
-    public void openPage(){
-       driver.get("https://www.saucedemo.com");
+    @Step("Open site www.saucedemo.com")
+    public void openPage() {
+        driver.get("https://www.saucedemo.com");
 
     }
 
     @Step("Login as user '{userName}' use password '{password}'")
-    public void login(String userName, String password){
+    public void login(String userName, String password) {
         driver.findElement(USERNAME_INPUT).sendKeys(userName);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
     }
 
     @Step("Get error message")
-    public String getErrorMessage(){
+    public String getErrorMessage() {
         return driver.findElement(ERROR_MESSAGE).getText();
     }
 
