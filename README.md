@@ -50,4 +50,11 @@ mvn clean test
 [INFO] Total time:  58.834 s
 [INFO] Finished at: 2021-12-24T00:11:37+03:00
 
-3 Использовать параметры для запуска конкретных тестов и методов //TODO
+3 Использовать параметры для запуска конкретных тестов и методов
+mvn test -Dtest=LoginPageTest#negativeLoginTest test
+
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  20.519 s
+[INFO] Finished at: 2022-01-08T12:54:38+03:00

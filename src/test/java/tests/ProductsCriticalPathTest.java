@@ -6,9 +6,9 @@ import tests.base.BaseTest;
 public class ProductsCriticalPathTest extends BaseTest {
 
     @Test
-    public void productShouldBeAddedIntoCart(){
+    public void productShouldBeAddedIntoCart() {
         loginPage.openPage();
-        loginPage.login("standard_user","secret_sauce");
+        loginPage.login("standard_user", "secret_sauce");
 
 
         inventoryPage.addToCart("Sauce Labs Onesie");
