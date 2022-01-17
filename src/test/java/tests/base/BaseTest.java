@@ -24,7 +24,6 @@ public class BaseTest {
     public InventoryPage inventoryPage;
     public CartPage cartPage;
 
-    @Parameters({"browser"})
     @BeforeMethod
     @Step("Browser launch")
     public void setUp(ITestContext testContext) {
