@@ -1,9 +1,11 @@
 package tests.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -24,13 +26,15 @@ public class BaseTest {
 
     @Parameters({"browser"})
     @BeforeMethod
-    public void setUp() {
+    @Step("Browser launch")
+    public void setUp(ITestContext testContext) {
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        testContext.setAttribute("driver", driver);
 
         loginPage = new LoginPage(driver);
         inventoryPage = new InventoryPage(driver);
@@ -38,6 +42,7 @@ public class BaseTest {
     }
 
     @AfterMethod
+    @Step("Browser quit")
     public void tearDown() {
 
         driver.quit();
